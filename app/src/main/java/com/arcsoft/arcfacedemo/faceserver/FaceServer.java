@@ -8,7 +8,9 @@ import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.util.Log;
 
+import com.arcsoft.arcfacedemo.DbController;
 import com.arcsoft.arcfacedemo.model.FaceRegisterInfo;
+import com.arcsoft.arcfacedemo.model.UserInfo;
 import com.arcsoft.face.ErrorInfo;
 import com.arcsoft.face.FaceEngine;
 import com.arcsoft.face.FaceFeature;
@@ -32,7 +34,7 @@ public class FaceServer {
     public static final String IMG_SUFFIX = ".jpg";
     private static FaceEngine faceEngine = null;
     private static FaceServer faceServer = null;
-    private static List<FaceRegisterInfo> faceRegisterInfoList;
+    public static List<FaceRegisterInfo> faceRegisterInfoList;
     public static String ROOT_PATH;
     public static final String SAVE_IMG_DIR = "register" + File.separator + "imgs";
     private static final String SAVE_FEATURE_DIR = "register" + File.separator + "features";
@@ -75,6 +77,8 @@ public class FaceServer {
             }
             return false;
         }
+
+
     }
 
     /**
@@ -123,6 +127,7 @@ public class FaceServer {
                     e.printStackTrace();
                 }
             }
+
         }
     }
 
@@ -201,7 +206,8 @@ public class FaceServer {
      * @param name     保存的名字，若为空则使用时间戳
      * @return 是否注册成功
      */
-    public boolean registerNv21(Context context, byte[] nv21, int width, int height, FaceInfo faceInfo, String name) {
+    public boolean registerNv21(Context context, byte[] nv21, int width, int height, FaceInfo
+            faceInfo, String name) {
         synchronized (this) {
             if (faceEngine == null || context == null || nv21 == null || width % 4 != 0 || nv21.length != width * height * 3 / 2) {
                 return false;
@@ -228,6 +234,7 @@ public class FaceServer {
                 return false;
             }
             FaceFeature faceFeature = new FaceFeature();
+
             //特征提取
             int code = faceEngine.extractFaceFeature(nv21, width, height, FaceEngine.CP_PAF_NV21, faceInfo, faceFeature);
             String userName = name == null ? String.valueOf(System.currentTimeMillis()) : name;
@@ -297,14 +304,15 @@ public class FaceServer {
     /**
      * 用于注册照片人脸
      *
-     * @param context  上下文对象
-     * @param bgr24    bgr24数据
-     * @param width    bgr24宽度
-     * @param height   bgr24高度
-     * @param name     保存的名字，若为空则使用时间戳
+     * @param context 上下文对象
+     * @param bgr24   bgr24数据
+     * @param width   bgr24宽度
+     * @param height  bgr24高度
+     * @param name    保存的名字，若为空则使用时间戳
      * @return 是否注册成功
      */
-    public boolean registerBgr24(Context context, byte[] bgr24, int width, int height, String name) {
+    public boolean registerBgr24(Context context, byte[] bgr24, int width, int height, String
+            name) {
         synchronized (this) {
             if (faceEngine == null || context == null || bgr24 == null || width % 4 != 0 || bgr24.length != width * height * 3) {
                 return false;

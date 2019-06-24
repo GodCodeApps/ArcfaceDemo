@@ -137,6 +137,14 @@ public class ChooseFunctionActivity extends AppCompatActivity {
         startActivity(new Intent(this, RegisterAndRecognizeActivity.class));
     }
 
+    public void jumpToRegist(View view) {
+        RegisterAndRecognizeAct.Companion.startActivity(0, this);
+    }
+
+    public void jumpToRecognize(View view) {
+        RegisterAndRecognizeAct.Companion.startActivity(1, this);
+    }
+
     /**
      * 打开相机，IR活体检测，人脸注册，人脸识别
      *
@@ -197,7 +205,7 @@ public class ChooseFunctionActivity extends AppCompatActivity {
                             view.setClickable(true);
                         }
                         ActiveFileInfo activeFileInfo = new ActiveFileInfo();
-                        int res = faceEngine.getActiveFileInfo(ChooseFunctionActivity.this,activeFileInfo);
+                        int res = faceEngine.getActiveFileInfo(ChooseFunctionActivity.this, activeFileInfo);
                         if (res == ErrorInfo.MOK) {
                             Log.i(TAG, activeFileInfo.toString());
                         }

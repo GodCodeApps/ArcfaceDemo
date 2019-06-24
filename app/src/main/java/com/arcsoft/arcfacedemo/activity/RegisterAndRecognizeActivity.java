@@ -75,7 +75,7 @@ public class RegisterAndRecognizeActivity extends AppCompatActivity implements V
     /**
      * 优先打开的摄像头
      */
-    private Integer rgbCameraID = Camera.CameraInfo.CAMERA_FACING_BACK;
+    private Integer rgbCameraID = Camera.CameraInfo.CAMERA_FACING_FRONT;
     private FaceEngine faceEngine;
     private FaceHelper faceHelper;
     private List<CompareResult> compareResultList;
@@ -98,7 +98,7 @@ public class RegisterAndRecognizeActivity extends AppCompatActivity implements V
      */
     private static final int REGISTER_STATUS_DONE = 2;
 
-    private int registerStatus = REGISTER_STATUS_DONE;
+    private int registerStatus = REGISTER_STATUS_READY;
 
     private int afCode = -1;
     private ConcurrentHashMap<Integer, Integer> requestFeatureStatusMap = new ConcurrentHashMap<>();

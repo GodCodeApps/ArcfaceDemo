@@ -76,6 +76,7 @@
             android:onClick="jumpToFaceRecognizeActivity"
             android:text="@string/face_recognize_mode" />
 
+
         <Button
             android:gravity="center"
             android:layout_width="match_parent"
@@ -89,6 +90,23 @@
             android:layout_height="wrap_content"
             android:onClick="jumpToBatchRegisterActivity"
             android:text="@string/face_manage" />
+
+
+
+
+        <Button
+            android:layout_margin="35dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="jumpToRegist"
+            android:text="jumpToRegist" />
+        <Button
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="jumpToRecognize"
+            android:text="jumpToRecognize" />
     </LinearLayout>
 
 </RelativeLayout>
